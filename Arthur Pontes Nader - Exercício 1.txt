@@ -1,0 +1,59 @@
+Nome: Arthur Pontes Nader - 2019022294
+
+
+Exercício 1 - Ordenar a sequência de naturais: 5,2,4,3,1
+
+1- Primeiramente, deve-se marcar o primeiro termo da sequência.
+
+		5',2,4,3,1
+
+2- Se o termo marcado for menor que o subsequente, deve seguir a marcação um termo adiante e reanalisar a condição do passo 2.
+
+		Ex: 1',3,2 -> 1 < 3 -> 1,3',2
+
+3- Se o termo marcado for maior que o subsequente, esse deve ser retirado momentaneamente da sequência.
+
+		5',2 -> 5 > 2 -> 5',_ 
+
+4- Então, o termo marcado deve assumir seu lugar
+
+		_,5'
+
+5- O termo menor passa a ocupar o lugar vago.
+		
+		2,5'
+
+6- O termo retirado momentaneamente da sequência só pode retornar a ela quando o termo à esquerda do lugar vago for menor do que ele ou quando não houver mais termo à esquerda.
+   Se o termo à esquerda for maior, ele assumirá o lugar vago.
+	
+		Ex: 2,4,5',3,1
+		    2,4,5',_,1
+		    2,4,_,5',1	->  4 > 3 -> 4 assume o lugar vago 
+		    2,_,4,5',1  ->  2 < 3 -> 3 retorna à sequência
+		    2,3,4,5',1
+		    
+
+9- Os passos 2 a 6 devem ser repetidos até que não haja termo vago e o termo marcado seja o último da sequência.
+
+8- Então, O último termo é desmarcado e os números se encontrarão em ordem crescente (1<2<3<4<5)
+
+
+Aplicação do algoritmo:  5,2,4,3,1   Percebe-se que o passo 2 foi desnecessário nesse caso porque o número 5 era o primeiro e o maior da sequência, o que nem sempre ocorre.
+			5',2,4,3,1   Apesar disso, o passo 2 é fundamental na generalização do algoritmo para aplicação em qualquer sequência de números naturais.
+			5',_,4,3,1
+			_,5',4,3,1
+			2,5',4,3,1
+			2,5',_,3,1
+			2,_,5',3,1
+			2,4,5',3,1
+			2,4,5',_,1
+		   	2,4,_,5',1
+		 	2,_,4,5',1
+		 	2,3,4,5',1
+			2,3,4,5',_
+			2,3,4,_,5'
+			2,3,_,4,5'
+			2,_,3,4,5'
+			_,2,3,4,5'
+			1,2,3,4,5'
+			1,2,3,4,5
